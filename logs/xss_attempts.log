@@ -1,0 +1,8 @@
+[2024-11-02 14:41:45] User: 11 - Comment: j
+[2024-11-02 14:41:47] User: 11 - Comment: kk
+[2024-11-02 14:42:21] User: 11 - Comment: kk
+[2024-11-02 14:42:53] User: 11 - Comment: <script>alert('XSS');</script>
+[2024-11-02 14:46:00] User: 11 - Comment: <script>alert('XSS');</script>
+[2024-11-02 14:46:05] User: 11 - Comment: <script>alert('XSS');</script>
+[2024-11-02 15:17:37] User: 11 - Comment: <script>alert('XSS');</script>
+[2024-11-02 18:07:21] User: robi - Comment: <script>alert('XSS');</script>

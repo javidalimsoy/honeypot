@@ -1,0 +1,200 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9fafb;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Container for Forms and Content */
+.container {
+    background-color: #ffffff;
+    max-width: 420px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 25px 30px;
+    text-align: center;
+    margin: 10px auto;
+}
+
+h2 {
+    color: #333;
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #62b0e8;
+    box-shadow: 0 0 4px rgba(98, 176, 232, 0.2);
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* Buttons */
+.button, input[type="submit"] {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px 0;
+    color: #fff;
+    background-color: #62b0e8;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.button:hover, input[type="submit"]:hover {
+    background-color: #51a0d1;
+    transform: translateY(-2px);
+}
+
+.button:disabled, input[type="submit"]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Error and Success Messages */
+.message {
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.error-message {
+    color: #d9534f;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+}
+
+.success-message {
+    color: #28a745;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+}
+
+/* Admin Table */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.admin-table th, .admin-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.admin-table th {
+    background-color: #f1f1f1;
+    color: #333;
+    font-weight: 600;
+}
+
+.admin-table tr:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+.admin-actions {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.admin-actions .button {
+    font-size: 13px;
+    padding: 6px 12px;
+}
+
+/* Responsive Design */
+@media (max-width: 500px) {
+    .container {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .button, input[type="submit"] {
+        font-size: 15px;
+    }
+}
+
+/* Success Message Styling */
+h2 {
+    color: #555555;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 16px;
+    color: #555;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #ffffff;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 20px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}

@@ -1,20 +1,18 @@
 <?php
-global $pdo;
-require_once '../../config/config.php'; // Load config directly to define DB connection
-require_once '../../src/functions/logging.php'; // Load logging functions directly
+require_once __DIR__ . '/../../config/config.php';
+require_once FUNCTIONS_PATH . 'logging.php';
+
 
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $query = $_POST['query'];
+    $comment = $_POST['comment'];
 
-    // Log SQL injection attempt with fallback for username
-    $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'guest';
-    log_sql_injection_attempt($username, $query);
+    // Log the comment for monitoring XSS attempts
+    log_xss_attempt(isset($_SESSION['username']) ? $_SESSION['username'] : 'guest', $comment);
 
-    // Vulnerable SQL query
-    $stmt = $pdo->query("SELECT * FROM users WHERE username LIKE '%$query%'");
-    $results = $stmt->fetchAll();
+    // Vulnerable display of the comment (no sanitization applied)
+    $display_comment = $comment;
 }
 ?>
 
@@ -22,23 +20,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>SQL Injection Challenge</title>
+    <title>XSS Challenge</title>
 </head>
 <body>
-<h2>SQL Injection Challenge</h2>
+<h2>XSS Challenge</h2>
 <form method="POST">
-    <label for="query">Search Users:</label>
-    <input type="text" id="query" name="query" required>
-    <button type="submit">Search</button>
+    <label for="comment">Leave a Comment:</label>
+    <input type="text" id="comment" name="comment" required>
+    <button type="submit">Post Comment</button>
 </form>
 
-<?php if (isset($results)): ?>
-    <h3>Results:</h3>
-    <ul>
-        <?php foreach ($results as $result): ?>
-            <li><?php echo htmlspecialchars($result['username']); ?></li>
-        <?php endforeach; ?>
-    </ul>
+<?php if (isset($display_comment)): ?>
+    <h3>Latest Comment:</h3>
+    <p><?php echo $display_comment; ?></p> <!-- Intentional XSS vulnerability -->
 <?php endif; ?>
 </body>
 </html>

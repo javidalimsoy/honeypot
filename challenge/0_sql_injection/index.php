@@ -1,22 +1,21 @@
+<?php include '../../header.php'; ?>
+
 <?php
 require_once __DIR__ . '/../../config/config.php';
 
-// Check if the logging file exists, then include it
-$loggingFile = realpath(__DIR__ . '/src/functions/logging.php');
-if ($loggingFile) {
-    require_once $loggingFile;
+if (file_exists(FUNCTIONS_PATH . 'logging.php')) {
+    require_once FUNCTIONS_PATH . 'logging.php';
 } else {
     die("Error: Cannot locate logging.php. Please check the path.");
 }
 
 session_start();
 
-global $pdo;  // Declare $pdo as global to access it
+global $pdo;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $query = $_POST['query'];
 
-    // Use a default username if none is provided
     $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'guest';
     log_sql_injection_attempt($username, $query);
 
@@ -51,3 +50,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <?php endif; ?>
 </body>
 </html>
+
+<?php include '../../footer.php'; ?>
